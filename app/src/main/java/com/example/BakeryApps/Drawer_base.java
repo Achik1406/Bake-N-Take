@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,6 +19,7 @@ import com.example.BakeryApps.ViewOrderMain;
 import com.example.BakeryApps.HomePage;
 import com.example.BakeryApps.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Drawer_base extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -74,6 +76,16 @@ public class Drawer_base extends AppCompatActivity implements NavigationView.OnN
             case R.id.nav_history:
                 startActivity(new Intent(this, ViewOrderMain.class));
                 overridePendingTransition(0, 0);
+                break;
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                SharedPreferences sharedPreferences3 = getSharedPreferences(Login.Pref_Name,0);
+                SharedPreferences.Editor editor =sharedPreferences3.edit();
+                editor.putBoolean("hasLoggedIn",false);
+                editor.commit();
+                Intent intent = new Intent(this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
                 break;
         }
         return false;

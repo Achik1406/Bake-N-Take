@@ -76,6 +76,7 @@ public class AddressMain extends FragmentActivity implements OnMapReadyCallback,
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             databaseReference.child("Address").child(UID).child("RoadAddress").setValue(addLoc);
+                            databaseReference.child("Address").child(UID).child("HouseUnit").setValue("");
                         }
 
                         @Override
@@ -95,6 +96,7 @@ public class AddressMain extends FragmentActivity implements OnMapReadyCallback,
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             databaseReference.child("Address").child(UID).child("RoadAddress").setValue("");
+                            databaseReference.child("Address").child(UID).child("HouseUnit").setValue("");
                         }
 
                         @Override
@@ -114,10 +116,10 @@ public class AddressMain extends FragmentActivity implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Kl and move the camera
+        LatLng Kl = new LatLng(3.1569, 101.7123);
+        mMap.addMarker(new MarkerOptions().position(Kl).title("Marker in Kuala Lumpur"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Kl));
     }
     @Override
     public void onLocationChanged(Location location) {

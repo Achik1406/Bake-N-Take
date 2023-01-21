@@ -226,37 +226,44 @@ public class DetailCakeMain extends Fragment {
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(countCake==0)
+                {
+                    Toast.makeText(getContext(), "Please Enter Cake Quantity", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String name = nameholder.getText().toString();
+                    String price = priceholder.getText().toString();
+                    String date = chooseCake.getText().toString().trim();
+                    String Cake = valueCake.getText().toString().trim();
+                    String Messages = edtMessage.getText().toString().trim();
+                    String Address = edtAddress.getText().toString().trim();
+                    String Address2 = edtAddress2.getText().toString().trim();
+                    String candle = valueCandle.getText().toString().trim();
+                    int quantity = Integer.parseInt(Cake);
+                    double Price = Double.parseDouble(price);
+                    double Total = quantity * Price;
+                    String TotalPrice = String.valueOf(Total);
 
-                String name = nameholder.getText().toString();
-                String price = priceholder.getText().toString();
-                String date = chooseCake.getText().toString().trim();
-                String Cake = valueCake.getText().toString().trim();
-                String Messages = edtMessage.getText().toString().trim();
-                String Address = edtAddress.getText().toString().trim();
-                String Address2 = edtAddress2.getText().toString().trim();
-                String candle = valueCandle.getText().toString().trim();
-                int quantity = Integer.parseInt(Cake);
-                double Price = Double.parseDouble(price);
-                double Total = quantity * Price;
-                String TotalPrice = String.valueOf(Total);
-
-                String Address3 = Address+",\n"+Address2;
+                    String Address3 = Address+",\n"+Address2;
 
 
-                Bundle data = new Bundle();
-                data.putString("url",purl);
-                data.putString("Name",name);
-                data.putString("Price",TotalPrice);
-                data.putString("Date",date);
-                data.putString("Cake",Cake);
-                data.putString("Message",Messages);
-                data.putString("Address",Address3);
-                data.putString("Candle",candle);
+                    Bundle data = new Bundle();
+                    data.putString("url",purl);
+                    data.putString("Name",name);
+                    data.putString("Price",TotalPrice);
+                    data.putString("Date",date);
+                    data.putString("Cake",Cake);
+                    data.putString("Message",Messages);
+                    data.putString("Address",Address3);
+                    data.putString("Candle",candle);
 
-                Fragment frag3 = new CheckOutFragment();
-                frag3.setArguments(data);
-                FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
-                fm.replace(R.id.wrapper,frag3).commit();
+                    Fragment frag3 = new CheckOutFragment();
+                    frag3.setArguments(data);
+                    FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
+                    fm.replace(R.id.wrapper,frag3).commit();
+
+                }
             }
         });
 

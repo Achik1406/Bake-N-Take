@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -189,7 +191,14 @@ public class CheckOutFragment extends Fragment {
                                 databaseReference.child("Payment").child(UID).child("Candle").setValue(candle);
                                 databaseReference.child("Payment").child(UID).child("MethodPay").setValue(methodpay);
                                 databaseReference.child("Payment").child(UID).child("Address").setValue(address);
-                                Toast.makeText(getContext(), "successful", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), " Payment successful", Toast.LENGTH_LONG).show();
+                                NotificationCompat.Builder builder = new NotificationCompat.Builder(view.getContext(),"Bake N' Take");
+                                builder.setSmallIcon(R.drawable.logo);
+                                builder.setContentTitle("Yummy!");
+                                builder.setContentText("Thank you for ordering with us!");
+                                builder.setAutoCancel(true);
+                                NotificationManagerCompat notificationManagerCompat =NotificationManagerCompat.from(view.getContext());
+                                notificationManagerCompat.notify(1,builder.build());
                                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
                                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new shopCakeMain());
 

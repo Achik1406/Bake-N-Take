@@ -64,7 +64,6 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        TextView forgotPass = findViewById(R.id.forgotpassword);
 
         GoogleSignInOptions  options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -80,13 +79,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        forgotPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, ForgotPassword.class));
-                finish();
-            }
-        });
+
 
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

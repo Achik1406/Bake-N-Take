@@ -70,8 +70,12 @@ public class AccMain extends Drawer_base{
             databaseReference.child("profileUser").child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    final String dataImg = snapshot.child("image").getValue().toString();
-                    Glide.with(getApplicationContext()).load(dataImg).into(binding.img);
+                    if(snapshot.exists())
+                    {
+                        final String dataImg = snapshot.child("image").getValue().toString();
+                        Glide.with(getApplicationContext()).load(dataImg).into(binding.img);
+                    }
+
                 }
 
                 @Override
