@@ -39,5 +39,5 @@ Object Declared :
 External REST API
 - 
 Using Google Map API
-Function : to set current location of user and save as address of user
+Function : to set current location of user and save as address of user.
 
