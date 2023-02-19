@@ -11,7 +11,7 @@ Group Members
 Introduction
 - Bake N' Take is the mobile application of cake booking system. Customer can register to the application and browse the cake based on the menus that shop provides. Customer can also enter messages, select quantity of cake and candles based on their preferences. This system can be useful for bakeries, pastry shops and online cake delivery businesses to automate their ordering process and improve customer experience.
 
-Instruction to Use the Application
+Project Demonstration
 -
 https://www.youtube.com/watch?v=uZxkKu4RC4o
 
